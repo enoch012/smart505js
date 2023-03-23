@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+  /*
+  * 데이터 타입 : 자바스크립트에서 사용하는 데이터의 종류를 구분해 놓은 것
+  * 숫자형 (Number) : 숫자를 표기하기 위한 데이터 타입, 정수, 실수를 모두 사용 가능, 양수 음수 모두 사용 가능
+  * 문자열형 (String) : 문자를 표기하기 위한 데이터 타입, 문자와 문자열 모두 포함
+  * 논리형 (Boolean) : 참과 거짓을 구분하기 위한 데이터 타입, true, false 2개의 데이터만 존재
+  * 배열 (Array) : 하나의 이름으로 여러개의 데이터를 저장하는 데이터 타입, index가 존재함
+  * 객체 (Object) : 배열과 비슷한 데이터 타입으로 index가 없고, key와 value가 1:1로 연동되어 있는 방식
+  * undefined : 데이터가 비어있다는 의미의 데이터 타입, 한번도 사용되지 않아서 데이터가 없는 경우, 초기화되지 않음, 변수가 처음 선언되면 undefined 상태
+  * null : 데이터가 비어있다는 의미의 데이터 타입, 여러번 사용 후 변수를 비워둔 경우
+  *  */
+
+  console.log("\n ----- 숫자형 데이터 타입 ----- \n")
+  var num1 = 100; //숫자형
+  console.log("변수 num1의 값 : " + num1 );
+
+  num1 = 200;
+  console.log("변수 num1의 값 : " + num1 );
+
+  num1 = 3.14;
+  console.log("변수 num1의 값 : " + num1 );
+
+  num1 = -100;
+  console.log("변수 num1의 값 : " + num1 );
+
+  console.log("\n ----- 문자열 데이터 타입 ----- \n");
+
+  var str1 = "문자열";
+  var str2 = "자바스크립트 " + "ES5 문법";
+  var str3 = str2 + "을 배웁니다.";
+  console.log(str1);
+  console.log(str2);
+  console.log(str3);
+
+  console.log("\n ----- 논리형 데이터 타입 ----- \n");
+  var bool1 = true;
+  console.log("변수 bool1 : " + bool1);
+
+  var num1 = prompt("숫자를 입력하세용.");
+  var bool2 = (num1 < 100);
+  console.log(bool2);
+
+  console.log("\n ----- 배열 데이터 타입 ----- \n");
+
+  var arrNumber  = [10, 20, 30, 40, 50];
+
+  console.log(arrNumber);
+  console.log(arrNumber[0]);
+  console.log(arrNumber[1]);
+  console.log(arrNumber[2]);
+  console.log(arrNumber[3]);
+  console.log(arrNumber[4]);
+
+  console.log("\n ----- Object 데이터 타입 ----- \n");
+
+  var obj = {name : "그랜저", color: "검정", type: "세단", price : "6000만원"}
+
+  console.log(obj.name);
+  console.log(obj.color);
+  console.log(obj.type);
+  console.log(obj.price);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
