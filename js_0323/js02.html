@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자바스크립트 1일차 2번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+    // alert("확인 버튼이 있는 메시지 창 출력");
+    //
+    // let result = confirm("확인/취소 버튼이 있는 메시지 창 출력");
+    // //확인 또는 취소 버튼 클릭에 따라 true, false 값을 남김
+    // alert("confirm 명령어 사용 후 결과 : "+ result);
+    //
+    // result = prompt("사용자 입력을 받기 위한 메세지 창 출력");
+    // alert("prompt 명령으로 사용자 입력 결과 : "+ result);
+    //
+    // result = prompt("기본값 사용하기", "기본값"); // 디폴트 값을 미리 입력해줄 수 있다.
+    // alert("prompt 명령으로 사용자 입력 결과 : "+ result);
+    //
+    // console.log("자바스크립트의 내용을 화면에 출력할 때 주로 사용");
+
+    // 변수 : 하나의 이름으로 하나의 데이터를 저장할 수 있는 메모리 공간
+    // 변수에 새로운 데이터를 저장 시 기존 데이터는 삭제 (데이터가 변경될 수 있음
+    // 한번 데이터 저장 후 변경할 수 없는 변수를 상수라고 함
+    // 변수 선언 시 사용하는 키워드는 var, let, const 가 존재함
+    // var와 let은 변수를 선언시 사용
+    // 현재는 var보다 let을 사용하는 것이 좋다.
+    // const 상수(변하지않는값)를 선언시 사용
+    // 상수는 데이터를 선언과 동시에 저장해야함
+    // 상수는 데이터를 선언과 동시에 저장해아함 (변경 불가능이기 때문에 데이터 저장을 1번만 허용)
+
+    // 변수 선언 시 규칙 (자바에도 동일한 규칙)
+    // 1. 변수명은 영어로 입력(당연하지만)
+    // 2. 특수문자 사용 불가(_, 달러 제외)
+    // 3. 영어 대서문자를 구분합니다용
+    // 4. 변수명에 사용 가능 (첫 글자로는 사용불가)
+    // 5. 자바스크립트 예약어는 변수명으로 사용 불가
+    // 6. 변수명에 여러개의 단어를 조합하여 사용할 경우, 첫단어는 모두 소문자, 두번째 이후의 단어는 첫글자는 대문자, 나머지는 소문자로 입력(카멜명명법).
+
+    // 사용법 :
+    // 선언
+    // 1. 키워드 변수명;
+    // 2. 키워드 변수명, = 데이터;
+
+    // 사용 :
+    // console.log(변수명);
+    // 변수명 3 = 변수1 + 변수2;
+
+    // 자바스크립트 변수의 특징
+    // 자바스크립트는 데이터 타입을 설정하지 않음.(데이터 저장시 내부적으로 타입을 확인)
+    // 자바스크립트의 변수에는 모든 데이터를 다 저장할 수 있음. (모든타입 가능.. 자바스크립트는 불가능)
+
+    // 1번 변수를 먼저 선언하고, 데이터는 필요시에 저장하여 사용하는 방식
+    var num1;
+    num = 100;
+
+    // 2번 방식, 변수를 선언과 동시에 데이터를 저장하여 사용하는 방식
+    var num2 = 200;
+
+    console.log(num1);
+    console.log(num2);
+
+    let num3;
+    num3 = 100;
+    let num4 = 100;
+    console.log(num3);
+    console.log(num4);
+
+    // const 키워드는 상수를 선언시 사용, 상수는 선언과 동시에 데이터를 입력해야한다.
+    // 그래서 콘솔에 num5 는 뜨지 않는 오류가 생기는 것이다. 그만졸아!!!!!!!!!!
+    // const에 든 상수는 데이터를 변경할 수 없다...
+
+    // const num5;
+    // num5 = 100;
+    const num6 = 200;
+
+    // console.log(num5);
+    console.log(num6);
+
+    num1 = 100;
+    console.log("변수의 num1의 값" + num1);
+
+    num1 = 1000000000;
+    console.log("변수의 num1의 값" + num1);
+
+    num1 = 3.14;
+    console.log("변수의 num1의 값" + num1);
+
+    num1 = "문자열로 입력좀해"
+    console.log("변수의 num1의 값" + num1);
+
+    console.log("------------변수 선언 규칙--------------");
+
+    var value = 100;
+    // var value# = 100; // 변수명에 특수 문자 사용 금지
+    // var val ue = 150; // 공백도 특수 기호나 마찬가지 금지
+    var val_ue = 400; // _, $는 사용 가능
+    var value1 = 500; // 숫자 사용 가능
+    var val1ue = 600;
+    // var 1value = 700; // 숫자를 첫글자로 사용 불가
+    var value = 800; // 변수 선언 시 대소문자를 구분
+    var VALUE = 900;
+    var Value = 10; // 대문자가 중간중간 다르게 들어가도 다른 변수
+    var blueColorButton = "blue"; // 변수의 이름에 여러개의 단어를 사용 시 각각의 단어를 구분 할 수 있도록 두번째 이후의 단어에 첫글자를 대문자로 표기(관례)
+    var bluecolorbutton = "blue"; // 다 소문자로 써도 되지만 대문자로 들어간 것이 가독성이 좋다.
+    var blue_color_button = "blue"; // 스네이크 명명법. 자바스크립트는 카멜 명명법을 기본으로 쓴다.
+
+    // var currentYear, birthYear, age; // 한번에 여러개의 변수를 동시에 선언, 가능은 하지만 가독성이 떨어지기 때문에 권하지 않는다.
+
+    /*교재 나이계산 프로그램 만들기 실습*/
+    var currentYear = 2023; // 기준 연도
+    var birthYear; // 태어난 연도
+    var age; // 저장할 나이
+
+    birthYear = prompt("태어난 연도를 입력하세요. (YYYY)", "");
+    age = currentYear - birthYear + 1;
+    document.write(currentYear + "년 현재<br>");
+    document.write(birthYear + "년에 태어난 사람의 나이는" + age + "세입니다.");
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
