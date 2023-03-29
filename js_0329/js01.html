@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+    // 문제 1) for문을 사용하여 원하는 단수의 구구단을 출력하는 프로그램을 작성하시오.
+    // * 사용자 입력을 통해서 출력할 구구단의 단수를 입력 받아 사용.
+
+    console.log("\n ----- 문제 1번 -----\n");
+
+    let inputNum = prompt("원하는 구구단 단수를 입력하세요.");
+    inputNum = Number(inputNum);
+
+    for (let i=1;i<10;i++){
+        console.log(
+            inputNum + " x " + i + " = " + (inputNum*i)
+        );
+    }
+
+    // 중첩된 for문 : for문 안에 for문이 존재하는 for문
+    // 밖에 있는 for문이 한 번 실행될 때 안에 있는 for문은 전체 실행 완료가 됨
+
+    console.log("\n ----- 중첩된 for문 -----\n");
+
+    for(let i = 0;i<5;i++){
+        for (let j = 0; j<5; j++){
+            console.log('i의 값 : '+ i + '\tj의 값 :'+j);
+        }
+        console.log("-------------");
+    }
+
+    console.log("\n ----- 문제 2번 -----\n");
+    //문제 2) 중첩 for문을 사용하여 구구단 전체를 출력하는 프로그램을 작성하세요.
+    for (let i = 1; i <10; i++){
+        console.log("------" + i +"단 ------");
+        for (let j =1; j<10; j++){
+            console.log(
+                i + " x " + j + " = " + (i*j)
+            );
+        }
+    }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
