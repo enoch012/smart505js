@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자바스크립트 5일차 2번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+    // 익명함수 : 함수의 이름이 없고 매개변수, 반환값, 연산식만 존재하는 함수
+    // 1회용 함수로 사용
+    // 콜백함수로 주로 사용함
+    // 변수에 익명함수를 저장하여 사용
+
+    // 콜백함수 : 자바스크립트에서 사용되는 함수 중 하나로 "함수의 매개변수로 사용"되어 특정 이벤트 혹은 연산 후 자동으로 실행되는 함수를 뜻함
+
+    function add(a,b){
+        const result = a +b;
+        console.log('두 수의 덧셈은 : '+result);
+    }
+
+    add(10,20);
+    add(20,30);
+
+    // 익명함수 표현식
+    const sub = function (a,b){
+        const result = a -b;
+        console.log("두 수의 뺄셈은 : " + result);
+    }
+
+    sub(10,3); // 변수명이 함수명이 된다.
+
+    let count = 0
+
+    // 익명함수를 사용하여 즉시 실행하기, 1회용으로 실행
+    // (function (a, b) {
+    //     console.log(a + b);
+    // }(10,20));
+
+    // setInterval(function (){
+    //     console.log('현재 카운트 : ' + count);
+    //     count++;
+    // }, 1000); // 함수를 매개변수처럼 씀, 매개변수의 기능을 하기 때문에 이름이 없고, 따로 호출해서 쓸 수 없음
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
