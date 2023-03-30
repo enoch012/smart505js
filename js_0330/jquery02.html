@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style>
+    .box {
+        width: 100px;
+        height: 100px;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+        // hide(속도, 콜백함수) : css의 display:none과 같은 효과를 주는 함수, 매개변수로 속도를 지정할 수 있음
+        // show(속도, 콜백함수) : css의 'display:block'과 같은 효과를 주는 함수, 매개 변수로 속도를 지정할 수 있음
+        // toggle(속도, 콜백함수) : hide()/show()를 번갈아가며 실행
+        // 속도 : slow, fast, 시간(1/1000초)
+        // 콜백함수 : hide() 함수 실행 후 자동으로 동작할 명령어를 입력
+
+        $('#div01-btn01').on('click',function () {
+            $('#div01-red').hide();
+            $('#div01-green').hide('slow');
+            $('#div01-blue').hide('fast');
+            $('#div01-gray').hide(3000);
+            $('#div01-dark').hide(5000, function () {
+                alert('hide가 실행되었습니다.');
+            });
+        });
+
+        $('#div01-btn02').on('click',function () {
+            $('#div01-red').show();
+            $('#div01-green').show('slow');
+            $('#div01-blue').show('fast');
+            $('#div01-gray').show(3000);
+            $('#div01-dark').show(5000, function () {
+                alert('show가 실행되었습니다.');
+            });
+        });
+
+        $('#div01-btn03').on('click',function () { // 없어졌다가 한번 더 누르면 다시 출력
+            $('#div01-red').toggle();
+            $('#div01-green').toggle('slow');
+            $('#div01-blue').toggle('fast');
+            $('#div01-gray').toggle(3000);
+            $('#div01-dark').toggle(5000, function () {
+                alert('toggle가 실행되었습니다.');
+            });
+        });
+
+        // fadeIn(속도, 콜백함수) : 기존에 숨겨져 있는 태그를 점진적으로 보이게 함
+        // fadeOut(속도, 콜백함수) : 기존에 보이는 태그를 점진적으로 숨김
+        // fadeToggle(속도, 콜백함수) : fadeIn/fadeOut 효과를 돌아가며 실행
+        // fadeTo(속도, 투명도, 콜백함수) : 지정한 투명도로 태그의 상태를 점진적으로 변경함
+        // 속도 : slow, fast, 시간(1/1000초), 미입력 시 즉시 최종 형태로 동작
+        // 콜백함수 : 해당 함수 실행 후 자동 실행할 명령어
+        // 투명도 : fadeTo에서 사용하는 추가 옵션으로 0.0 ~ 1.0 까지의 숫자를 설정
+
+        $('#div02-fadeIn').on('click', function (){
+            $('#div02-red').fadeIn();
+            $('#div02-green').fadeIn('slow');
+            $('#div02-blue').fadeIn('fast');
+            $('#div02-gray').fadeIn(3000);
+            $('#div02-dark').fadeIn(5000, function () {
+                alert('fade In 사용 후 콜백 함수 동작');
+            });
+        });
+
+        $('#div02-fadeOut').on('click', function (){
+            $('#div02-red').fadeOut();
+            $('#div02-green').fadeOut('slow');
+            $('#div02-blue').fadeOut('fast');
+            $('#div02-gray').fadeOut(3000);
+            $('#div02-dark').fadeOut(5000, function () {
+                alert('fade In 사용 후 콜백 함수 동작');
+            });
+        });
+
+        $('#div02-fadeToggle').on('click', function (){
+            $('#div02-red').fadeToggle();
+            $('#div02-green').fadeToggle('slow');
+            $('#div02-blue').fadeToggle('fast');
+            $('#div02-gray').fadeToggle(3000);
+            $('#div02-dark').fadeToggle(5000, function () {
+                alert('fade In 사용 후 콜백 함수 동작');
+            });
+        });
+
+        $('#div02-fadeTo').on('click', function (){ // 속도랑 투명도 값이 모두 있어야 동작함
+            $('#div02-red').fadeTo(1000, 0.15);
+            $('#div02-green').fadeTo('slow', 0.3);
+            $('#div02-blue').fadeTo('fast', 0.5);
+            $('#div02-gray').fadeTo(3000, 0.7);
+            $('#div02-dark').fadeTo(5000, 0.3, function () {
+                alert('fade In 사용 후 콜백 함수 동작');
+            });
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div id="div01">
+      <h3>jquery effect 함수(hide, show, toggle)</h3>
+      <div id="div01-btns" class="my-3">
+        <button type="button" class="btn btn-primary" id="div01-btn01">hide()</button>
+        <button type="button" class="btn btn-primary" id="div01-btn02">show()</button>
+        <button type="button" class="btn btn-primary" id="div01-btn03">toggle()</button>
+      </div>
+      <div class="d-flex" id="div01-sub">
+        <div class="box border mx-2 bg-danger" id="div01-red"></div>
+        <div class="box border mx-2 bg-success" id="div01-green"></div>
+        <div class="box border mx-2 bg-primary" id="div01-blue"></div>
+        <div class="box border mx-2 bg-secondary" id="div01-gray"></div>
+        <div class="box border mx-2 bg-dark" id="div01-dark"></div>
+      </div>
+    </div>
+    <hr>
+    <div class="div02 my-3">
+      <h3>fade 효과(fadeIn, fadeOut, fadeToggle, fadeTo)</h3>
+      <div class="my-3">
+        <button type="button" class="btn btn-primary" id="div02-fadeIn">fadeIn</button>
+        <button type="button" class="btn btn-primary" id="div02-fadeOut">fadeOut</button>
+        <button type="button" class="btn btn-primary" id="div02-fadeToggle">fadeToggle</button>
+        <button type="button" class="btn btn-primary" id="div02-fadeTo">fadeTo</button>
+      </div>
+      <div class="d-flex">
+        <div class="box border mx-2 bg-danger" id="div02-red"></div>
+        <div class="box border mx-2 bg-success" id="div02-green"></div>
+        <div class="box border mx-2 bg-primary" id="div02-blue"></div>
+        <div class="box border mx-2 bg-secondary" id="div02-gray"></div>
+        <div class="box border mx-2 bg-dark" id="div02-dark"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
