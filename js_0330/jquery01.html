@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery 1일차 1번</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+      // jQuery : 자바스크립트를 조금 더 쉽게 사용하기 위한 라이브러리
+      // jquery를 사용한다는 의미로 $기호를 명령어 앞에 사용
+      // 자바스크립트는 html 태그를 선택하기 위해서 css의 선택자를 사용함
+      // jquery는 html 태그를 선택하기 위해서 $('CSS선택자') 형태로 사용함
+
+      // $(document) : 현재 웹 문서를 뜻함, document = html 문서, $기호로 jquery를 통해 해당 문서를 선택한다는 의미.
+      // ready() : addEventListener('DOMContentLoaded')와 같은 기능을 하는 이벤트
+
+      // 사용법 :
+      // $('css 선택자').jquery명령어();
+      // 태그 선택 :
+      // 키워드 변수명 = $('css선택자');
+
+      $(document).ready(function () { // 여러번 써도 상관 없음, 관례적으로 이 형식을 씀
+          // on('이벤트 종류', 콜백함수) : 자바스크립트 이벤트 리스너에 지정한 이벤트를 등록
+          // off('이벤트 종류') : 자바스크립트 이벤트 리스너에 등록된 이벤트를 제거
+          // one('이벤트 종류', 콜백함수) : 자바스크립트 이벤트 리스너에 지정한 이벤트를 1회용으로 등록
+      });
+
+      // $('#btn01').onclick(function (){}); // 예전 방식
+      // $('#btn01').on('click', function (){}); // 최근 방식
+
+      $(document).on('ready', function () {
+
+      });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+        // $('#btn01').on('click', function () {
+        //     alert('클릭');
+        // });
+        // $('#btn01').on('contextmenu', function () {
+        //     alert('마우스 우클릭');
+        // });
+
+        $('#btn01').on('click', function (){
+          $('#img01').on('click', function () {
+              alert('클릭 이벤트');
+          });
+            alert('on 명령어를 이용해 클릭 이벤트 등록');
+        });
+
+        $('#btn02').on('click', function (){
+            $('#img01').off('click'); // 등록되어있는 이벤트 삭제
+            alert('off명령어를 통해 이벤트 삭제');
+        });
+
+        $('#btn03').on('click', function (){
+            $('#img01').one('click', function () { // 한번만 동작하는 이벤트 등록
+                alert('일회용 클릭 이벤트');
+            });
+        });
+
+        $('#div-red').on('click', function (){
+            alert('클릭 이벤트 발생');
+        });
+
+        $('#div-red').on('contextmenu', function (){
+            alert('마우스 오른쪽 클릭 이벤트 발생');
+        });
+
+        $('#div-green').on('dbclick', function (){
+            alert('더블 클릭 이벤트 발생');
+        });
+
+        $('#div-green').hover(function () { // hover 명령어는 on 대신에 넣어야 작동함
+            alert('hover 이벤트 발생');
+        });
+
+        $('#div-blue').on('mousedown', function () {
+            alert('mousedown 이벤트 발생');
+        });
+
+        $('#div-blue').on('mouseenter',function () {
+            alert('mouseenter 이벤트 발생');
+        });
+
+        $('#div-blue').on('mouseout',function () {
+            alert('mouseout 이벤트 발생');
+        });
+        
+        $('#input01').on('keydown', function () { // 누를 때 발생
+            console.log('keydown 이벤트 발생');
+        });
+
+        $('#input02').on('keypress', function () {
+            console.log('keypress 이벤트 발생');
+        });
+
+        $('#input03').on('keyup', function () { // 눌렀다가 떼면 발생, 키 다운보다 많이씀
+            console.log('keyup 이벤트 발생');
+        });
+    });
+  </script>
+  <style>
+    .box {
+        width: 100px;
+        height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h3>jquery를 이용한 이벤트</h3>
+  <div>
+    <button type="button" class="btn btn-primary" id="btn01">클릭 이벤트 등록</button>
+    <button type="button" class="btn btn-primary" id="btn02">클릭 이벤트 삭제</button>
+    <button type="button" class="btn btn-primary" id="btn03">1회용 클릭 이벤트</button>
+    <br><br>
+    <img src="./images/001.jpg" alt="메인쿤" id="img01">
+  </div>
+  <br><br><br>
+  <h3>다른 이벤트 사용하기</h3>
+  <div class="d-flex justify-content-center">
+    <div class="bg-danger m-3 box" id="div-red"></div>
+    <div class="bg-success m-3 box" id="div-green"></div>
+    <div class="bg-primary m-3 box" id="div-blue"></div>
+  </div>
+
+  <hr>
+<!-- 문제 1) 아래의 input 태그에 키보드 이벤트를 각각 설정하세요 -->
+  <h3>키보드 이벤트 사용하기</h3>
+  <div>
+    <div>
+      <input type="text" class="form-control my-1" id="input01">
+    </div>
+    <div>
+      <input type="text" class="form-control my-1" id="input02">
+    </div>
+    <div>
+      <input type="text" class="form-control my-1" id="input03">
+    </div>
+  </div>
+</div>
+</body>
+</html>
