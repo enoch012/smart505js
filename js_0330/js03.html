@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자바스크립트 5일차 3번 파일 </title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <script>
+    // 자바스크립트 이벤트 사용하기
+    // 이벤트 사용법
+    // 1. HTML 태그에 직접 입력하기
+    // 2. addEventListener 사용하기 (권장1)
+    // 3. jqueryd의 on() 함수 시용하기 (권장2)
+
+    // 자바스크립트 이벤트 사용시 <script>태그가 html태그보다 먼저 사용되면 html 태그를 못찾는 경우가 존재함
+    // 자바스크립트 이벤트를 사용해야함
+    // 1. html 이벤트 중 load 이벤트 사용
+    // load 이벤트는 html 페이지의 모든 리소스가 로딩이 완료된 후 동작
+    // 화면 로딩이 느릴 수 있음 (권장하지 않음)
+    window.onload = function (){
+        const btn02 = document.getElementById('btn02'); // 쿼리셀렉터 이전에 예전에 쓰던 방식
+        btn02.addEventListener('click', function (){
+            alert('addEventListener로 클릭 이벤트 발생');
+        });
+
+        $('#btn03').on('click', function (){
+            alert('jquery로 클릭 이벤트 발생');
+        });
+    }
+
+
+    // 2. 자바스크립트의 addEventListener 사용
+    // DOMContentLoaded 이벤트를 사용하여 해당 페이지의 html 태그의 로딩이 끝나면 이벤트 동작
+    window.addEventListener('DOMContentLoaded', function (){
+        const btn02 = document.querySelector('#btn02');
+        btn02.addEventListener('click', function (){
+            alert('addEventListener로 클릭 이벤트 발생');
+        });
+
+        $('#btn03').on('click', function (){
+            alert('jquery로 클릭 이벤트 발생');
+        });
+    })
+
+
+    // 3. jQuery의 ready() 사용
+    // jquery의 ready() 이벤트를 사용하여 해당 페이지의 html 태그의 로딩이 끝나면 동작
+    // addEventListener의 DOMContentLoaded를 사용한 것과 동일함
+    $(document).ready(function (){
+        const btn02 = document.querySelector('#btn02');
+        btn02.addEventListener('click', function () {
+            alert('에드이벤트리스너로 클릭 이벤트 발생');
+        });
+
+        $('#btn03').on('click', function () {
+            alert('jquery로 클릭 이벤트 발생');
+        });
+    });
+  </script>
+  <!-- 자바스크립트로 html 태그를 호출 시 body 태그가 실행되기 전이기 때문에 querySelector로 검색하면 해당 태그가 없음 -->
+  <!--    <script>-->
+  <!--      // 순수 자바스크립트 코드로 이벤트 사용-->
+  <!--      const btn02 = document.querySelector('#btn02');-->
+  <!--      btn02.addEventListener('click',function (){-->
+  <!--          alert('addEventListener로 이벤트 등록');-->
+  <!--      });-->
+
+  <!--      // jquery 라이브러리를 사용하여 이벤트-->
+  <!--      $('#btn03').on('click', function (){-->
+  <!--          alert('jquery로 이벤트 등록');-->
+  <!--      });-->
+  <!--    </script>-->
+</head>
+<body>
+  <div class="container my-4">
+    <div class="">
+      <button type="button" class="btn btn-primary my-2" id="btn01" onclick="alert('html에 직접 이벤트 등록');">html에 직접 이벤트 등록</button>
+      <button type="button" class="btn btn-primary my-2" id="btn02">addEventListener 사용</button>
+      <button type="button" class="btn btn-primary my-2" id="btn03">jQuery의 on 사용</button>
+    </div>
+
+
+  </div>
+</body>
+</html>
