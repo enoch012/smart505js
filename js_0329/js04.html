@@ -196,10 +196,11 @@
 
     console.log('------ 문제8 ------');
 
-    let inputNum = prompt("출력을 원하는 구구단 단수를 입력하세요.", "5");
-    inputDansu(inputNum);
+    // let inputNum = prompt("출력을 원하는 구구단 단수를 입력하세요.", "5");
+    inputDansu();
 
-    function inputDansu(num1){
+    function inputDansu(){
+        let num1 = prompt("출력을 원하는 구구단 단수를 입력하세요.", "5");
         let dannum = Number(num1);
         gugudan(dannum);
     }
@@ -217,13 +218,9 @@
     // ** 변수명 : kor, eng, math, total, avg
     // *** A = 90이상, B = 80이상, C = 70이상, D = 60이상, F = 60 미만
 
-    let kor = prompt("국어 점수를 입력하세요.");
-    let eng = prompt("영어 점수를 입력하세요.");
-    let math = prompt("수학 점수를 입력하세요.");
-
-    kor = change(kor);
-    eng = change(eng);
-    math = change(math);
+    let kor = inputScore('국어');
+    let eng = inputScore('영어');
+    let math = inputScore('수학');
 
     let avg = totalAvg(kor,eng,math);
     let grade = avgGrade(avg);
@@ -231,11 +228,12 @@
     printGrade(avg, grade);
 
 
-    // 입력값 숫자형으로 변환
-    function change(num){
-        num = Number(num);
-        return num;
+    // 입력
+    function inputScore(sub){
+        let score = prompt(sub + '점수를 입력해주세요');
+        return Number(score);
     }
+
 
     // 합계 및 평균
     function totalAvg(num1, num2, num3){
@@ -251,14 +249,14 @@
         if(num1 >=90){
             return 'A';
         }
-        if(num1 >=80){
+        else if(num1 >=80){
             return 'B';
         }
-        if(num1 >=70){
+        else if(num1 >=70){
             return 'C';
         }
-        if(num1 >=60){
-            return '4';
+        else if(num1 >=60){
+            return 'D';
         }
         else{
             return 'F';
