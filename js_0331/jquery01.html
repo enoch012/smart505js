@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 1번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style>
+    #div01 .panel {
+        /*고정된 높이 및 길이를 해야 오류가 안 나는 것 같다*/
+        height: 150px;
+        display: none;
+        padding: 50px;
+    }
+    #div02 .parent {
+        height: 500px;
+        width: 500px;
+        /*position: relative;*/
+    }
+    #div02 .box {
+        height: 100px;
+        width: 100px;
+        position: absolute;
+    }
+  </style>
+  <script>
+    // slideDown(속도, 콜백) : 특정 영역을 숨기고 있다가 동작 시 슬라이드 애니메이션과 함께 해당 영역을 보여줌
+    // slideUP(속도, 콜백) : 동작 시 특정 영역을 애니메이션과 함께 숨김
+    // slideToggle(속도, 콜백) : slideDown/slideUp을 번갈아가며 동작
+    // 속도 : slow, fast, 시간(1/1000초), 없어도 되지만 없으면? 애니메이션이 안나온다~
+    // 콜백 : 해당 명령이 실행이 완료된 후 동작
+    $(document).ready(function () {
+        $('#btn-slideDown').on('click',function () {
+            $('.panel').slideDown('slow');
+        });
+
+        $('#btn-slideUp').on('click',function () {
+            $('.panel').slideUp('slow');
+        });
+
+        $('#btn-slideToggle').on('click',function () {
+            $('.panel').slideToggle(2000, function () {
+                alert('slideToggle 동작 후 실행되었어용~');
+            });
+        });
+
+        // animate({css 속성 : 속성값}, 속도, 콜백) : jquery에서 기본 애니메이션 사용을 쉽게 하도록 미리 만들어 놓은 함수
+        // css 속성 : 자바스크립트의 object 타입을 사용하여 여러가지 css 속성을 동시에 지정할 수 있음
+        // 속도 : slow, fast, 시간 (1/1000초), 속도 지정이 없으면? 애니메이션이 동작 안한다~
+        // 콜백 : 해당 함수가 실행 완료된 후 동작
+
+
+        // stop(전체멈춤, 최종형태) : jquery의 이펙트 및 애니메이션 동작 중 해당 동작을 멈추는 함수
+        // 전체멈춤 : 연결된 애니메이션이 있을 경우 모든 애니메이션을 멈출 것인지 설정
+        // 최종형태 : stop 명령 사용 시 해당 애니메이션의 최종 형태로 이동할 것인지, 애니메이션 중간에 멈출 것인지 설정
+
+        // 체이닝 : jquery 함수를 연결해서 사용하는 방식
+        // 동일한 html 태그에 사용할 경우 여러개의 jquery 함수를 각 라인마다 한줄씩 입력하는 것이 아니라 하나의 html 태그에 여러개의 jquery 함수를 이어서 입력함
+        // 예제)
+        // $('#box').animate({width : '100px'}, slow);
+        // $('#box').animate({top : '100px'}, slow);
+        // $('#box').animate({left : '0px'}, slow);
+        // 체이닝 적용 예제)
+        // $('#box').animate({width : '100px'}, slow).animate({top : '100px'}, slow).animate({left : '0px'}, slow);
+
+        $('#btn-ani').on('click', function () {
+            $('#box').animate({'left': '400px'}, 3000);
+        });
+        $('#btn-aniMulti').on('click', function () {
+            $('#box').animate({
+                'left': '300px',
+                'opacity' : '0.5',
+                'height' : '200px',
+                'width' : '200px'
+            }, 1200);
+        });
+        $('#btn-aniRelative').on('click', function () {
+            $('#box').animate({
+                'left': '300px',
+                'height' : '+=100px', // 현재 값에서 100px 더해라(클릭하면 계속 적용됨)
+                'width' : '+=100px'
+            }, 1200);
+        });
+        $('#btn-aniQueue').on('click', function () { // 차례대로 애니메이션이 먹힘, 여러 속성도 가능
+            // $('#box').animate({'left': '400px'}, 1000);
+            // $('#box').animate({'top': '400px'}, 1000);
+            // $('#box').animate({'left': '0'}, 1000);
+            // $('#box').animate({'top': '0'}, 1000);
+
+            const box = $('#box'); // 상수를 만들어 jquery에 적용시킬 수 있다.
+
+            box.animate({'left': '400px'}, 2500);
+            box.animate({'top': '400px'}, 2500);
+            box.animate({'left': '0'}, 2500);
+            box.animate({'top': '0'}, 2500);
+        });
+
+        $('#btn-stop').on('click', function () {
+            $('#box').stop(); // 기본값이 false, false
+        });
+
+        $('#btn-stop0pt').on('click', function () {
+            $('#box').stop(true, true); // 동작 중 해당 애니메이션의 최종 형태로 멈추면서, 이후의 애니메이션도 멈춰버림
+            // $('#box').stop(true, false); // 연결되는 애니메이션 중지, 현재 애니메이션 상태로 정지
+            // $('#box').stop(false, true); // 최종형태로만 이동하고 이후의 애니메이션은 작동시켜준다, 현재 애니메이션의 최종 형태로 이동
+        });
+
+        // 체이닝, 여러 동작을 한번에 연결해서 적을 수 있다.
+        $('#btn-chaining').on('click', function () {
+            $('#box')
+                .animate({left : '200px'}, 'slow')
+                .animate({top : '200px'}, 'slow')
+                .hide('slow')
+                .show('slow')
+                .animate({
+                left : '0px',
+                top : '0px'
+            }, 'slow');
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!--  슬라이드  -->
+    <div id="div01">
+      <h3>slideDown/slideUp/slideToggle</h3>
+      <div class="my-2">
+        <button type="button" class="btn btn-primary" id="btn-slideDown">slideDown</button>
+        <button type="button" class="btn btn-primary" id="btn-slideUp">slideUp</button>
+        <button type="button" class="btn btn-primary" id="btn-slideToggle">slideToggle</button>
+      </div>
+      <div class="panel border bg-secondary bg-opacity-50 text-center my-3" id="">
+        <p class="m-0">버튼 클릭 시 보여지는 영역</p>
+      </div>
+    </div>
+    <hr>
+    <!--  애니메이션  -->
+    <div id="div02">
+      <h3>animate/stop</h3>
+      <div>
+        <button type="button" class="btn btn-primary my-1" id="btn-ani">애니메이션 동작</button>
+        <button type="button" class="btn btn-primary my-1" id="btn-aniMulti">애니메이션 속성 여러개</button>
+        <button type="button" class="btn btn-primary my-1" id="btn-aniRelative">애니메이션 속성 연산</button>
+        <button type="button" class="btn btn-primary my-1" id="btn-aniQueue">애니메이션 여러개</button>
+        <button type="button" class="btn btn-danger my-2" id="btn-stop">stop 옵션 사용</button>
+        <button type="button" class="btn btn-danger my-2" id="btn-stop0pt">stop0pt 옵션 사용</button>
+        <button type="button" class="btn btn-primary my-1" id="btn-chaining">애니메이션 체이닝</button>
+      </div>
+      <div class="position-relative border my-3 parent">
+        <div class="box bg-success" id="box"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
