@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 3번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style></style>
+  <script>
+    // jQuery를 통해서 html 태그 추가/삭제
+    // append() : 지정한 태그 마지막에 지정한 태그 내용을 추가하는 jquery 함수
+    // prepend() : 지정한 태그 가장 앞에 지정한 태그 내용을 추가하는 jquery 함수
+    // after() : 지정한 태그 바로 뒤에 지정한 태그 내용을 추가하는 jquery 함수
+    // before() : 지정한 태그 바로 앞에 지정한 태그 내용을 추가하는 jquery 함수
+    // remove() : 지정한 태그를 삭제하는 jquery 함수, 자식 태그 포함
+    // empty() : 지정한 태그의 자식 태그를 삭제하는 jquery 함수
+
+    $(document).ready(function () {
+        let appendCount = 1;
+        let prependCount = 1;
+        let afterCount = 1;
+        let beforeCount = 1;
+
+        $('#btn-append01').on('click', function () {
+            $('#test-p').append('<strong>추가된 문자!' + appendCount + '</strong> ');
+            $('#test-ol').append('<li>뒤에 추가된 리스트' + appendCount + '</li>');
+            appendCount++;
+        });
+
+        $('#btn-prepend01').on('click', function () {
+            $('#test-p').prepend('<strong>추가된 문자!' + prependCount + '</strong> ');
+            $('#test-ol').prepend('<li>앞에 추가된 리스트' + prependCount + '</li>');
+            prependCount++;
+        });
+
+        $('#btn-after01').on('click', function () { // 지정한 태그에서 뒷 부분에 붙는다는 점
+            $('#test-p').after(' <strong>뒤에 추가된 문자'+ afterCount+'</strong> ');
+            $('#test-ol').after('<li>뒤에 추가된 리스트'+ afterCount + '</li>');
+            afterCount++;
+        });
+
+        $('#btn-before01').on('click', function () { // 지정한 태그에서 앞서 붙는다는 점
+            $('#test-p').before(' <strong>앞에 추가된 문자'+ beforeCount+'</strong> ');
+            $('#test-ol').before('<li>앞에 추가된 리스트'+ beforeCount + '</li>');
+            beforeCount++;
+        });
+
+        $('#btn-append02').on('click', function () {
+            // 순수 문자열에 html 태그를 사용한 방식
+            const txt1 = '<p>추가된 문자열</p>';
+            // jquery를 사용하여 비어있는 p태그를 생성한 후 text() 함수를 사용하여 문자열 추가
+            const txt2 = $('<p></p>').text('추가된 문자열');
+            // 순수 자바스크립트를 이용하여 p 태그를 생성한 후 innerHTML로 문자열을 추가
+            const txt3 = document.createElement('p');
+            txt3.innerHTML = '추가된 문자열';
+
+            $('#test-p').append(txt1, txt2, txt3);
+        });
+
+        $('#btn-prepend02').on('click', function () {
+            const txt1 = '<p>추가된 문자열</p>';
+            const txt2 = $('<p></p>').text('추가된 문자열');
+            const txt3 = document.createElement('p');
+            txt3.innerHTML = '추가된 문자열';
+
+            $('#test-p').prepend(txt1, txt2, txt3);
+        });
+
+        $('#btn-after02').on('click', function () {
+            const txt1 = '<p>추가된 문자열</p>';
+            const txt2 = $('<p></p>').text('추가된 문자열');
+            const txt3 = document.createElement('p');
+            txt3.innerHTML = '추가된 문자열';
+
+            $('#test-p').after(txt1, txt2, txt3);
+        });
+
+        $('#btn-before02').on('click', function () {
+            const txt1 = '<p>추가된 문자열</p>';
+            const txt2 = $('<p></p>').text('추가된 문자열');
+            const txt3 = document.createElement('p');
+            txt3.innerHTML = '추가된 문자열';
+
+            $('#test-p').before(txt1, txt2, txt3);
+        });
+
+        $('#btn-remove01').on('click', function (){
+            $('#parent').remove();
+        });
+
+        $('#btn-empty').on('click', function (){
+            $('#parent').empty();
+        });
+
+        $('#btn-remove02').on('click', function (){
+            $('p').remove('.del01', '.del02');
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container my-5">
+    <h3>append()/prepend()</h3>
+    <div>
+      <button type="button" class="btn btn-primary" id="btn-append01">append() 추가</button>
+      <button type="button" class="btn btn-primary" id="btn-prepend01">prepend() 추가</button>
+      <button type="button" class="btn btn-primary" id="btn-after01">after() 추가</button>
+      <button type="button" class="btn btn-primary" id="btn-before01">before() 추가</button>
+
+      <br><br>
+      <button type="button" class="btn btn-success" id="btn-append02">append() 여러가지 방식</button>
+      <button type="button" class="btn btn-success" id="btn-prepend02">prepend() 여러가지 방식</button>
+      <button type="button" class="btn btn-success" id="btn-after02">after() 여러가지 방식</button>
+      <button type="button" class="btn btn-success" id="btn-before02">before() 여러가지 방식</button>
+    </div>
+    <div class="my-3">
+      <p id="test-p">기본 문자열 입니당.</p>
+      <ol id="test-ol">
+        <li>리스트1</li>
+        <li>리스트2</li>
+        <li>리스트3</li>
+      </ol>
+    </div>
+    <hr>
+    <h3>remove()/empty()</h3>
+    <div>
+      <button type="button" class="btn btn-danger" id="btn-remove01">remove()로 삭제</button>
+      <button type="button" class="btn btn-danger" id="btn-empty">empty()로 자식 태그 삭제</button>
+      <button type="button" class="btn btn-danger" id="btn-remove02">remove()와 필터링으로 삭제</button>
+    </div>
+    <div class="my-3">
+      <div class="border bg-warning p-2" id="parent" style="height:200px; width:300px;">
+        <p>버튼 클릭 시 삭제 될 자식 태그</p>
+        <div>
+          <p>버튼 클릭 시 삭제 될 자손 태그</p>
+        </div>
+        <p class="del01">버튼 2 클릭시 삭제 될 태그</p>
+        <p class="del01">버튼 2 클릭시 삭제 될 태그</p>
+        <p class="del02">버튼 2 클릭시 삭제 될 태그</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
