@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 7번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style>
+    .desc * {
+        display: block;
+        border:2px solid gray;
+        color : gray;
+        padding : 10px;
+        margin : 5px;
+    }
+  </style>
+  <script>
+    // 자손 태그를 선택
+    // children(css선택자) : 지정한 html 태그의 자손 태그를 선택, 매개 변수로 css 선택자 사용할 경우 자손 태그 중 지정한 태그만 선택
+    // find() : 지정한 html 태그의 자손 태그를 모두 선택, 매개변수로 css 선택자를 사용할 경우 자손 태그 중 지정한 태그만 선택, 모든 자손 태그를 선택시 '*'을 사용.
+
+    $(document).ready(function (){
+        $('#div07 div').children().css({
+            'color' : 'red',
+            'border' : '2px solid red'
+        });
+
+        $('#div07 div').children('span').css({ // '직계' 자식 중의 span 태그
+            'color' : 'blue',
+            'border' : '2px solid blue'
+        });
+
+        $('#div02 div').find('span').css({ // 자식 중의 모든 span 태그
+            // 자손 태그 전부를 선택하고 싶을 때 $('#div02 div').find('*') 을 사용하면 된다.
+            'color' : 'blue',
+            'border' : '2px solid blue'
+        });
+
+    });
+  </script>
+</head>
+<body>
+  <div class="container my-5" id="div07">
+    <h3>children()</h3>
+    <div class="desc" style="width: 500px"> div (지정한 태그)
+      <p>p (1단계 자식 태그)
+        <span> span (2단계 자식 태그)</span>
+      </p>
+      <p> p (1단계 자식 태그)
+        <span>span (2단계 자식 태그)</span>
+      </p>
+      <span> span (1단계 자식 태그) </span>
+    </div>
+  </div>
+  <div class="container my-5" id="div02">
+    <h3>children()</h3>
+    <div class="desc" style="width: 500px"> div (지정한 태그)
+      <p>p (1단계 자식 태그)
+        <span> span (2단계 자식 태그)</span>
+      </p>
+      <p> p (1단계 자식 태그)
+        <span>span (2단계 자식 태그)</span>
+      </p>
+      <span> span (1단계 자식 태그) </span>
+    </div>
+  </div>
+</body>
+</html>
