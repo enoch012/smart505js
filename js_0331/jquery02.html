@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 2번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style></style>
+  <script>
+    // jQuery를 이용하여 html의 속성값 변경
+    // text(문자) : html 태그의 텍스트를 입력하거나 가져오는 함수, 태그의 시작 태그와 끝 태그 사이의 문자
+    // html(문자) : html 태그의 텍스트를 입력하거나 가져오는 함수, 태그의 시작 태그와 끝 태그 사이의 문자, 텍스트 안에 html 태그 코드가 있을 경우 해당 태그를 인식
+    // val(데이터) : html 태그 중 value 속성의 속성값을 입력하거나 가져오는 함수
+
+    $(document).ready(function () {
+
+
+        $('#btn-getText').on('click', function () {
+            const txt = $('#test').text();
+            alert(txt);
+        });
+        $('#btn-getHtml').on('click', function () {
+            const txt = $('#test').html();
+            alert(txt);
+        });
+        $('#btn-getVal').on('click', function () {
+            const txt = $('#test-input').val();
+            alert(txt);
+        });
+        $('#btn-setText').on('click', function () {
+            let txt = '클릭 시 <em><strong>추가될</strong></em> 문자열';
+            $('#test').text(txt);
+        });
+        $('#btn-setHtml').on('click', function () {
+            let txt = '클릭 시 <em><strong>추가될</strong></em> 문자열';
+            $('#test').html(txt); // html이 적용된 상태로 대체된다.
+        });
+        $('#btn-setVal').on('click', function () {
+            let txt = '클릭 시 value 속성에 입력될 문자열'
+            $('#test-input').val(txt);
+        });
+
+        // attr('속성명') : html 태그의 지정한 속성의 속성값을 설정하거나 가져옴
+        // 속성명만 입력 시 해당 속성의 속성값을 가져옴
+        // 속성값까지 입력 시 해당 속성의 속성값을 설정함
+        // javascript의 object 타입을 사용하여 여러개의 속성을 한번에 설정할 수 있음
+        // 사용법
+        // 변수 = $('css선택자').attr('속성명');
+        // $('css선택자').attr('속성명', '속성값');
+        // $('css선택자').attr({'속성명1':'속성값1', '속성명2':'속성값2', ...});
+
+        $('#btn-getAttr').on('click', function () {
+            let url = $('#link-btn').attr('href');
+            alert(url);
+        });
+
+        $('#btn-setAttr').on('click', function () {
+            let url = "http://";
+            url += $('#link-input').val();
+
+            $('#link-btn').attr('href', url);
+
+        });
+        $('#btn-setAttrMulti').on('click', function () {
+            let url = "http://";
+            url += $('#link-input').val();
+
+            $('#link-btn').attr({
+                'href' : url,
+                'title' : '여러개 속성 한번에 수정하기',
+                'target' : '_blank' // 문자열 따옴표 사이에 공백 조심하기
+            });
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container my-5">
+    <div id="div01">
+      <h3>text()/html()</h3>
+      <div>
+        <button type="button" class="btn btn-primary" id="btn-getText">text()로 가져오기</button>
+        <button type="button" class="btn btn-primary" id="btn-getHtml">html()로 가져오기</button>
+        <button type="button" class="btn btn-primary" id="btn-getVal">val()로 가져오기</button>
+        <br><br>
+        <button type="button" class="btn btn-info text-white" id="btn-setText">text()로 설정하기</button>
+        <button type="button" class="btn btn-info text-white" id="btn-setHtml">html()로 설정하기</button>
+        <button type="button" class="btn btn-info text-white" id="btn-setVal">val()로 설정하기</button>
+      </div>
+      <div class="my-3">
+        <p id="test">버튼 클릭 시 가져오거나 <strong>설정하게</strong> 될 텍스트</p>
+        <input type="text" class="form-control" id="test-input" value="기본 텍스트">
+      </div>
+    </div>
+    <hr>
+    <div class="div02">
+      <h3>attr()</h3>
+      <div>
+        <button type="button" class="btn btn-primary" id="btn-getAttr">attr()로 가져오기</button>
+        <button type="button" class="btn btn-primary" id="btn-setAttr">attr()로 설정오기</button>
+        <button type="button" class="btn btn-primary" id="btn-setAttrMulti">attr()로 여러개 속성 설정하기</button>
+        <input type="text" class="form-control my-2" id="link-input" placeholder="설정할 url로 주소를 입력하세요.">
+        <div class="my-3">
+          <a href="http://www.naver.com" class="btn btn-link" id="link-btn" target="_self">네이버 홈페이지</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
