@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 5번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style>
+    .panel {
+        /*box-sizing: content-box;*/
+        /*border 값이냐 content 값이냐에 따라 값이 다르게 나온다.*/
+        height : 300px;
+        width: 500px;
+        padding: 10px;
+        margin: 5px;
+        border: 2px solid #000;
+        background-color: #ffebed;
+    }
+  </style>
+  <script>
+    // jquery의 크기 함수
+    // width(너비) : 지정한 태그의 콘텐츠 영역 너비를 설정하거나 가져오는 jquery 함수
+    // height(높이) : 지정한 태그의 콘텐츠 영역 높이를 설정하거나 가져오는 jquery 함수
+    // innerWidth() : 지정한 태그의 padding 영역까지의 너비를 가져오는 jquery 함수
+    // innerHeight() : 지정한 태그의 padding 영역까지의 높이를 가져오는 jquery 함수
+    // outerWidth(true) : 지정한 태그의 border 영역까지의 너비를 가져오는 jquery 함수, true를 사용 시 지정한 태그의 margin 영역까지의 너비를 가져옴
+    // outerHeight(true) : 지정한 태그의 border 영역까지의 높이를 가져오는 jquery 함수, true를 사용 시 지정한 태그의 margin 영역까지의 높이를 가져옴
+    
+    $(document).ready(function (){
+        let txt = '';
+
+        $('#btn-width').on('click', function () {
+            txt = 'width : '+ $('.panel').width() + 'px<br>';
+            // alert(txt);
+            $('.panel').html(txt);
+
+        });
+
+        $('#btn-height').on('click', function () {
+            txt += 'height : '+ $('.panel').height() + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-innerWidth').on('click', function () {
+            txt += 'innerWidth : '+ $('.panel').innerWidth() + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-innerHeight').on('click', function () {
+            txt += 'innerHeight : '+ $('.panel').innerHeight() + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-outerWidth').on('click', function () {
+            txt += 'outerWidth : '+ $('.panel').outerWidth() + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-outerHeight').on('click', function () {
+            txt += 'outerHeight : '+ $('.panel').outerHeight() + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-outerWidthTrue').on('click', function () {
+            txt += 'outerWidth(true) : '+ $('.panel').outerWidth(true) + 'px <br>';
+            $('.panel').html(txt);
+        });
+
+        $('#btn-outerHeightTrue').on('click', function () {
+            txt += 'outerHeight(true) : '+ $('.panel').outerHeight(true) + 'px <br>';
+            $('.panel').html(txt);
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container my-5">
+    <h3>width/height</h3>
+    <div class="my-3">
+      <button type="button" class="btn btn-primary" id="btn-width">width()로 너비 가져오기</button>
+      <button type="button" class="btn btn-primary" id="btn-height">height()로 높이 가져오기</button>
+    </div>
+    <div class="my3">
+      <h3>innerWidth/innerHeight</h3>
+      <button type="button" class="btn btn-primary" id="btn-innerWidth">
+        innerWidth()로 padding 영역까지 너비 가져오기
+      </button>
+      <button type="button" class="btn btn-primary" id="btn-innerHeight">
+        innerHeight()로 padding 영역까지 높이 가져오기
+      </button>
+    </div>
+    <div class="my-3">
+      <h3>outerWidth()/outerHeight()</h3>
+      <button type="button" class="btn btn-primary" id="btn-outerWidth">
+        outerWidth()로 border영역까지 너비 가져오기
+      </button>
+      <button type="button" class="btn btn-primary" id="btn-outerHeight">
+        outerHeight()로 border영역까지 높이 가져오기
+      </button>
+    </div>
+    <div class="my-3">
+      <h3>outerWidth(true)/outerHeight(true)</h3>
+      <button type="button" class="btn btn-primary" id="btn-outerWidthTrue">
+        outerWidth(true)로 margin영역까지 너비 가져오기
+      </button>
+      <button type="button" class="btn btn-primary" id="btn-outerHeightTrue">
+        outerHeight(true)로 margin영역까지 높이 가져오기
+      </button>
+    </div>
+
+    <div class="my-3">
+      <div class="panel">
+        <p>기본 설정 : width 500px, height 300px</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
