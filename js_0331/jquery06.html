@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 2일차 6번 파일</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
+  <style>
+    .ancestors * {
+        display: block;
+        border: 2px solid lightgray;
+        color : gray;
+        padding: 10px;
+        margin: 20px;
+    }
+  </style>
+  <script>
+    // 지정한 태그를 기준으로 부모 태그 및 자손 태그 선택하기
+    // parent() : 지정한 태그를 기준으로 바로 한단계 위의 부모 태그를 선택
+    // parants() : 지정한 태그를 기준으로 모든 조상 태그들을 선택
+    // parentUntil('css 선택자') : 지정한 태그를 기준으로하고 매개변수로 입력된 태그 사이의 조상 태그를 선택
+
+    $(document).ready(function () {
+        $('#div01 span').parent().css({
+            'color' : 'red',
+            'border' : '2px solid red'
+        });
+
+        $('#div02 span').parents().css({
+            'color' : 'red',
+            'border' : '2px solid red'
+        });
+
+        $('#div03 span').parentsUntil('div').css({ // 부모와 선택한 자식의 사이에 있는 것들만 선택하겠다.
+            'color' : 'blue',
+            'border' : '2px solid blue'
+        });
+    });
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div id="div01">
+      <h3>parent()</h3>
+      <div class="ancestors">
+        <div style="width:500px;"> div (3단계 상위 부모 태그)
+          <ul> ul (2단계 상위 부모 태그)
+            <li> li (1단계 상위 부모 태그)
+              <span>지정한 span 태그</span>
+            </li>
+          </ul>
+        </div>
+        <div> div(2단계 상위 부모 태그)
+          <p>p (1단계 상위 부모 태그)
+            <span>지정한 span 태그</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3>parent()</h3>
+    <div id="div02">
+      <div class="ancestors"> div (4단계 상위 부모 태그)
+        <div style="width: 500px"> div (3단계 상위 부모 태그)
+          <ul> ul (2단계 상위 부모 태그)
+            <li> li (1단계 부모 태그)
+              <span> span (지정한 태그)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-3" id="div03">
+    <h3>parentUntil()</h3>
+    <div style="width: 500px" class="ancestors"> div (3단계 상위 부모 태그)
+      <ul> ul (2단계 상위 부모 태그)
+        <li> li (1단계 부모 태그)
+          <span> span (지정한 태그)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
